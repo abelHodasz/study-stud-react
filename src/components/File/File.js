@@ -3,13 +3,13 @@ import "./File.css";
 import { Card, Button } from "@material-ui/core";
 import { saveAs } from "file-saver";
 import Axios from "axios";
-import axios from "../../axios/axios";
+import axios, { baseURL } from "../../axios/axios";
 import DeleteIcon from "@material-ui/icons/Delete";
 
 export default function File(props) {
     const download = () => {
         let instance = Axios.create({
-            baseURL: "http://localhost:5000",
+            baseURL: baseURL,
             responseType: "blob",
         });
         instance.get(`files/${props.id}`).then((response) => {
